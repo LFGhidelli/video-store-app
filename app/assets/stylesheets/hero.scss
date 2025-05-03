@@ -1,0 +1,29 @@
+.hero-banner {
+  background-image: image-url("banner_2.png");
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  display: flex; // required for flex utils to work if not using Bootstrap's d-flex
+}
+// .hero-banner {
+//   position: relative;
+
+//   .hero-img {
+//     width: 100%;
+//     height: auto;
+//     object-fit: cover;
+//     max-height: 600px;
+//   }
+
+//   .hero-overlay {
+//     position: absolute;
+//     top: 30%;
+//     left: 10%;
+//     color: white;
+//     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+//   }
+// }
+
+// .text {
+//   color: red;
+// }
