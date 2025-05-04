@@ -1,3 +1,38 @@
 <%= render "navbar" %>
 <%= render "hero" %>
-<h1>Hello World</h1>
+
+<div class="container">
+  <div id="topRatedCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <% TmdbClient.top_rated_movies["results"].each_slice(4).with_index do |movie_group, index| %>
+        <div class="carousel-item <%= 'active' if index == 0 %>">
+          <div class="container">
+            <div class="row">
+              <% movie_group.each do |movie| %>
+                <div class="col-sm-3">
+                  <div class="card h-100">
+                    <%= image_tag "https://image.tmdb.org/t/p/w200#{movie["poster_path"]}", class: "card-img-top movie-poster" %>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= movie["original_title"] %></h5>
+                      <p class="card-text text-truncate" style="max-width: 150px;"><%= movie["overview"] %></p>
+                      <%= link_to "Details", movie_path(movie["id"]), class: "btn btn-primary" %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#topRatedCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#topRatedCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
