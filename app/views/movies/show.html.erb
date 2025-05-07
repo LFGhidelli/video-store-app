@@ -28,5 +28,16 @@
         <p><strong>Vote average:</strong> <%= @movie["vote_average"] %> / 10</p>
       </div>
     </div>
+
+    <%= form_with model: Rental.new, url: movie_rentals_path(@movie["id"]) do |f| %>
+      <%= f.label :rental_date %>
+      <%= f.text_field :rental_date, class: "datepicker form-control" %>
+
+      <%= f.label :rental_date %>
+      <%= f.text_field :return_date, class: "datepicker form-control" %>
+
+      <%= f.submit "Rent this movie", class: "btn btn-primary" %>
+    <% end %>
+
   </div>
 </div>

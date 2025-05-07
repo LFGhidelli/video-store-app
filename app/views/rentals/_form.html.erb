@@ -1,0 +1,9 @@
+<%= form_with model: @rental do |f| %>
+  <%= f.label :rental_date %>
+  <%= f.text_field :rental_date, class: "datepicker" %>
+
+  <%= f.label :return_date %>
+  <%= f.text_field :return_date, class: "datepicker" %>
+
+  <%= f.submit "Rent" %>
+<% end %>
