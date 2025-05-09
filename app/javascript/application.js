@@ -2,8 +2,7 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
-import flatpickr from "flatpickr";
-import "flatpickr/dist/flatpickr.min.css";
+const flatpickr = require("flatpickr");
 
 document.addEventListener("DOMContentLoaded", () => {
   flatpickr(".datepicker", {

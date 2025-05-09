@@ -2,6 +2,7 @@
 <%= render "hero" %>
 
 <div class="container">
+  <h2 class="mt-5">Top rated movies</h2>
   <div id="topRatedCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <% TmdbClient.top_rated_movies["results"].each_slice(4).with_index do |movie_group, index| %>
@@ -13,10 +14,9 @@
                   <div class="card h-100">
                     <%= image_tag "https://image.tmdb.org/t/p/w200#{movie["poster_path"]}", class: "card-img-top movie-poster" %>
                     <div class="card-body">
-                      <h5 class="card-title"><%= movie["original_title"] %></h5>
-                      <p class="card-text text-truncate" style="max-width: 150px;"><%= movie["overview"] %></p>
-                      <%= link_to "Details", movie_path(movie["id"]), class: "btn btn-primary" %>
+                      <p class="card-title"><%= movie["original_title"] %></p>
                     </div>
+                    <%= link_to "Details", movie_path(movie["id"]), class: "btn btn-primary" %>
                   </div>
                 </div>
               <% end %>
