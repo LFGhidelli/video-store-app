@@ -6,8 +6,8 @@ class RentalsController < ApplicationController
 
   def create
     @rental = Rental.create(
-      rental_date:,
-      return_date: 
+      rental_date:  params[:rental_date],
+      return_date:  params[:return_date]
 
     )
   end

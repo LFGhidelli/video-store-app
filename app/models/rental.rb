@@ -1,5 +1,5 @@
 class Rental < ApplicationRecord
-  has_many :movie_rentals
+  belongs_to :user
 
-  # enum status: { active: 0, returned: 1, overdue: 2 }
+  has_many :movie_rentals
 end

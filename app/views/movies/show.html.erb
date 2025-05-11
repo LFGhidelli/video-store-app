@@ -37,9 +37,14 @@
         <li><strong>Return date:</strong> <%= (Date.today + 3).strftime("%B %e, %Y") %></li>
       </ul>
 
-      <%= link_to "Rent this movie!", movie_rentals_path(@movie["id"]),
-                  method: :post,
-                  class: "btn btn-success" %>
+      <%= form_with url: movie_movie_rentals_path(@movie["id"]), method: :post do |form| %>
+        <%= form.label :rental_date, "Rental date" %>
+        <%= form.date_field :rental_date %>
+        <%= form.label :return_date %>
+        <%= form.date_field :return_date %>
+        <%= form.submit "Add to basket" %>
+      <% end %>
+
     </div>
 
   </div>
