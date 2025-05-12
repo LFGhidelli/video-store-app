@@ -29,23 +29,33 @@
       </div>
     </div>
 
-    <div class="card shadow-sm p-4 my-4">
-      <h5 class="mb-3">Choose your rental window:</h5>
+    <% if user_signed_in? %>
+      <div class="card p-4 shadow-sm mb-4">
+        <h4 class="mb-3">Rent "<%= @movie["title"] %>"</h4>
+        <%= form_with url: movie_movie_rentals_path(@movie["id"]), method: :post, local: true do |form| %>
+          <div class="mb-3">
+            <%= form.label :rental_date, "Rental date", class: "form-label" %>
+            <%= form.date_field :rental_date,
+                  class: "form-control",
+                  value: Date.today,
+                  readonly: true %>
+          </div>
+          <div class="mb-3">
+            <%= form.label :return_date, "Return date", class: "form-label" %>
+            <%= form.date_field :return_date,
+                  class: "form-control",
+                  min: Date.today + 1.day,
+                  max: Date.today + 7.day %>
+          </div>
 
-      <ul class="list-unstyled mb-3">
-        <li><strong>Rental date:</strong> <%= Date.today.strftime("%B %e, %Y") %></li>
-        <li><strong>Return date:</strong> <%= (Date.today + 3).strftime("%B %e, %Y") %></li>
-      </ul>
-
-      <%= form_with url: movie_movie_rentals_path(@movie["id"]), method: :post do |form| %>
-        <%= form.label :rental_date, "Rental date" %>
-        <%= form.date_field :rental_date %>
-        <%= form.label :return_date %>
-        <%= form.date_field :return_date %>
-        <%= form.submit "Add to basket" %>
-      <% end %>
-
+          <%= form.submit "Add to basket", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    <% else %>
+    <div class="alert alert-warning mt-4">
+      <h5 class="mb-2">You must be signed in to rent a movie</h5>
+      <%= link_to "Sign in", new_user_session_path, class: "btn btn-outline-primary" %>
     </div>
-
+    <% end %>
   </div>
 </div>
