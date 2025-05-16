@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_12_100717) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_16_074004) do
   create_table "customers", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -26,7 +26,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_12_100717) do
     t.integer "rental_id", null: false
     t.integer "movie_id", null: false
     t.datetime "returned_at"
-    t.integer "status"
     t.datetime "rental_date"
     t.datetime "return_date"
     t.index ["movie_id"], name: "index_movie_rentals_on_movie_id"
@@ -46,7 +45,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_12_100717) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.index ["user_id"], name: "index_rentals_on_user_id"
   end
 
