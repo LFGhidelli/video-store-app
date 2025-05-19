@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   root "movies#index"
-
   resources :movies do
     resources :movie_rentals
   end
+  resources :rentals
 end

@@ -1,0 +1,30 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Your Rentals</h2>
+
+  <% current_user.rentals.each do |rental| %>
+    <% rental.movie_rentals.each do |mr| %>
+      <div class="card mb-3 shadow-sm">
+        <div class="row g-0 d-flex align-items-center">
+          <div class="col-auto">
+            <%= image_tag "https://image.tmdb.org/t/p/w185#{mr.movie.poster_path}",
+                          class: "img-fluid rounded-start",
+                          style: "max-width: 100px;",
+                          alt: mr.movie.title %>
+          </div>
+
+          <div class="col">
+            <div class="card-body">
+              <h5 class="card-title mb-2"><%= mr.movie.title %></h5>
+              <p class="card-text mb-1">
+                <strong>Rented:</strong> <%= mr.rental_date.strftime("%b %d, %Y") %>
+              </p>
+              <p class="card-text">
+                <strong>Return by:</strong> <%= mr.return_date.strftime("%b %d, %Y") %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

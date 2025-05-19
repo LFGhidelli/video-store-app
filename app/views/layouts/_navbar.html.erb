@@ -19,6 +19,7 @@
     </div>
 
     <% if user_signed_in? %>
+      <%= link_to "Rentals", rentals_path, style: "text-decoration: none; margin-right: 16px; color: white" %>
       <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn btn-danger" %>
     <% else %>
       <%= button_to "Sign in", new_user_session_path, class: "btn btn-success" %>

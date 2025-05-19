@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_16_074004) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_19_085804) do
   create_table "customers", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -39,13 +39,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_074004) do
     t.string "genre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "poster_path"
   end
 
   create_table "rentals", force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status", default: 0, null: false
+    t.string "status", default: "pending", null: false
     t.index ["user_id"], name: "index_rentals_on_user_id"
   end
 

@@ -6,14 +6,14 @@ class MovieRentalsController < ApplicationController
   end
 
   def create
-    debugger
     @movie = Movie.create!(
       title: @movie_info["title"],
       description: @movie_info["overview"],
       release_year: @movie_info["release_date"],
-      genre: @movie_info["genres"]
+      genre: @movie_info["genres"],
+      poster_path: "https://image.tmdb.org/t/p/w200#{@movie_info["poster_path"]}"
     )
-    @rental = current_user.rentals.find_by(status: :pending) || current_user.rentals.create!(status: 0)
+    @rental = current_user.rentals.find_by(status: :pending) || current_user.rentals.create!
     @movie_rental = @rental.movie_rentals.create!(
       movie_id: @movie.id,
       rental_date: params[:rental_date],
