@@ -10,4 +10,9 @@ class RentalsController < ApplicationController
 
     )
   end
+
+  def update
+    @rental = Rental.find(params[:id])
+    @rental.update!(status: "pending")
+  end
 end
