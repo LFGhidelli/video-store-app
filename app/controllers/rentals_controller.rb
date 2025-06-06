@@ -1,4 +1,9 @@
 class RentalsController < ApplicationController
+  def index
+    @tab = params[:tab] || "ongoing"
+    @rentals = Rental.where(status: @tab)
+  end
+
   def new
     @rental = Rental.new()
   end

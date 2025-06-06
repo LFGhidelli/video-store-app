@@ -1,7 +1,25 @@
 <div class="container mt-5">
+
+  <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Ongoing", rentals_path(tab: "ongoing"), class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Returned", rentals_path(tab: "completed"), class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  </li>
+</ul>
+
+
   <h2 class="mb-4">Your Rentals</h2>
 
   <% current_user.rentals.each do |rental| %>
+    <% debugger %>
     <% rental.movie_rentals.each do |mr| %>
       <div class="card mb-3 shadow-sm">
         <div class="row g-0 d-flex align-items-center">
@@ -27,6 +45,4 @@
       </div>
     <% end %>
   <% end %>
-  <h3>Complete checkout</h3>
-  <%= render "form" %>
 </div>
