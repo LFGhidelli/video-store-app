@@ -1,24 +1,21 @@
 <div class="container mt-5">
 
-  <ul class="nav nav-tabs">
+<ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Active</a>
+    <%= link_to "Ongoing", rentals_path(tab: "ongoing"),
+        class: "nav-link #{'active' if params[:tab] == 'ongoing'}" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Ongoing", rentals_path(tab: "ongoing"), class: "nav-link" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "Returned", rentals_path(tab: "completed"), class: "nav-link" %>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    <%= link_to "Returned", rentals_path(tab: "returned"),
+        class: "nav-link #{'active' if params[:tab] == 'returned'}" %>
   </li>
 </ul>
 
 
+
   <h2 class="mb-4">Your Rentals</h2>
 
-  <% current_user.rentals.each do |rental| %>
+  <% @rentals.each do |rental| %>
     <% rental.movie_rentals.each do |mr| %>
       <div class="card mb-3 shadow-sm">
         <div class="row g-0 d-flex align-items-center">
