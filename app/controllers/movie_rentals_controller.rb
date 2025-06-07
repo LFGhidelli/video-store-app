@@ -6,13 +6,18 @@ class MovieRentalsController < ApplicationController
   end
 
   def create
-    @movie = Movie.create!(
+    @movie = if Movie.find_by(title: @movie_info["title"]).blank?
+      Movie.create!(
       title: @movie_info["title"],
       description: @movie_info["overview"],
       release_year: @movie_info["release_date"],
       genre: @movie_info["genres"],
       poster_path: "https://image.tmdb.org/t/p/w200#{@movie_info["poster_path"]}"
     )
+    else
+      @movie = Movie.find_by(title: @movie_info["title"])
+    end
+
     @rental = current_user.rentals.create!(status: "ongoing")
     @movie_rental = @rental.movie_rentals.create!(
       movie_id: @movie.id,

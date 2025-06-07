@@ -3,5 +3,5 @@ class Rental < ApplicationRecord
 
   has_many :movie_rentals, dependent: :destroy
 
-  enum :status, %w[pending ongoing returned]
+  enum :status, %w[pending ongoing returned].index_by(&:itself)
 end

@@ -19,7 +19,6 @@
   <h2 class="mb-4">Your Rentals</h2>
 
   <% current_user.rentals.each do |rental| %>
-    <% debugger %>
     <% rental.movie_rentals.each do |mr| %>
       <div class="card mb-3 shadow-sm">
         <div class="row g-0 d-flex align-items-center">
